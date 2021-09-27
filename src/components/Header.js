@@ -134,6 +134,20 @@ const Search = styled.div`
       // figure out a way to make these animations disappear when on mobile
     }
   }
+  @media (max-width: 767px) {
+    margin: 10px 0;
+    div {
+      max-width: 200px;
+      input {
+        transition: box-shadow 1s, width 1s, background-color 1s;
+      }
+      input:focus {
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+        width: 250px;
+        background-color: white;
+      }
+    }
+  }
 `;
 
 // search icon inside the search input field
