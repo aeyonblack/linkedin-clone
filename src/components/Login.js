@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
   return (
@@ -22,19 +24,37 @@ function Login() {
           />
         </Hero>
         <Form>
-          <Button>Search for a job</Button>
-          <Button>Find a person you know</Button>
-          <Button>Learn a new skill</Button>
+          <Button>
+            Search for a job{' '}
+            <span>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </span>
+          </Button>
+          <Button>
+            Find a person you know{' '}
+            <span>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </span>
+          </Button>
+          <Button>
+            Learn a new skill{' '}
+            <span>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </span>
+          </Button>
         </Form>
       </Section>
     </Container>
   );
 }
 
+// the main page container
 const Container = styled.div`
   padding: 0px;
+  background-color: white;
 `;
 
+// the navigation bar containing the logo and login buttons
 const Nav = styled.div`
   max-width: 1128px;
   margin: auto;
@@ -53,6 +73,7 @@ const Nav = styled.div`
   }
 `;
 
+// the join button
 const Join = styled.a`
   font-size: 15px;
   padding: 10px 12px;
@@ -71,6 +92,7 @@ const Join = styled.a`
   }
 `;
 
+// the sign in button
 const SignIn = styled.a`
   font-size: 15px;
   cursor: pointer;
@@ -85,6 +107,7 @@ const SignIn = styled.a`
   }
 `;
 
+// the section consisting of the image and heading
 const Section = styled.section`
   display: flex;
   align-content: start;
@@ -104,6 +127,7 @@ const Section = styled.section`
   }
 `;
 
+// the hero made up of an image and a heading
 const Hero = styled.div`
   width: 100%;
   h1 {
@@ -142,18 +166,24 @@ const Form = styled.div``;
 
 const Button = styled.button`
   width: 180%;
-  display: block;
+  display: flex;
+  justify-content: start;
   margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid #d9d9d9;
-  padding: 20px 60px 20px 10px;
+  padding: 20px 60px 20px 20px;
   text-align: start;
   font-weight: 600;
+  justify-content: space-between;
   color: #444444;
   cursor: pointer;
+  z-index: 0;
   transition: box-shadow 0.5s;
   :hover {
     box-shadow: 0 0 11px rgba(0, 0, 0, 0.3);
+  }
+  :nth-child(1) {
+    color: #a300cc;
   }
 `;
 

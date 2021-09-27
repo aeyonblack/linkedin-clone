@@ -9,22 +9,17 @@
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  font-family: Quicksand;
 }
 
 body {
   overflow-y: scroll;
   overflow-x: hidden;
-  font-family: Quicksand;
-}
-
-button {
-  font-family: Quicksand;
 }
 
 :root,
 body,
 html {
-  /* background-color: #f5f5f5; for the main app */
-  background-color: white;
+  background-color: #f5f5f5;
   box-sizing: border-box;
 }
