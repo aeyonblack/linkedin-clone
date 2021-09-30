@@ -152,8 +152,8 @@ const Item = styled.div`
   span {
     display: flex;
     align-items: center;
-    color: #333;
-    font-weight: 500;
+    color: #222;
+    font-weight: 600;
   }
   :hover {
     background-color: rgba(0, 0, 0, 0.08);

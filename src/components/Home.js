@@ -7,20 +7,22 @@ import Rightside from './Rightside';
 function Home() {
   return (
     <Container>
-      <Section>
-        <h5>
-          <a>Job searching?</a>
-        </h5>
-        <p>
-          Find jobs that suit your skills and interests and make new connections
-          while doing so
-        </p>
-      </Section>
-      <Layout>
-        <Leftside />
-        <Main />
-        <Rightside />
-      </Layout>
+      <Content>
+        <Section>
+          <h5>
+            <a>Job searching?</a>
+          </h5>
+          <p>
+            Find jobs that suit your skills and interests and make new
+            connections while doing so
+          </p>
+        </Section>
+        <Layout>
+          <Leftside />
+          <Main />
+          <Rightside />
+        </Layout>
+      </Content>
     </Container>
   );
 }
@@ -59,11 +61,11 @@ const Section = styled.div`
 const Layout = styled.div`
   display: grid;
   grid-template-areas: 'leftside main rightside';
-  grid-template-columns: minmax(0, 5fx) minmax(0, 12fx) minmax(300px, 7fx);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
   column-gap: 25px;
   row-gap: 25px;
   grid-template-rows: auto;
-  margin: 25px 0;
+  margin: 0px 0;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
