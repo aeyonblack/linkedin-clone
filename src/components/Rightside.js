@@ -54,8 +54,8 @@ const FollowCard = styled.div`
   background-color: #fff;
   border-radius: 5px;
   position: relative;
-  border: none;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); */
   padding: 12px;
 `;
 

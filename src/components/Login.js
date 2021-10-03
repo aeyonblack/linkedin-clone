@@ -2,17 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
+import { signInAPI } from '../actions';
+import { Redirect } from 'react-router';
 
-function Login() {
+function Login(props) {
   return (
     <Container>
+      {props.user && <Redirect to="/home" />}
       <Nav>
         <a href="/">
           <img src="/images/login-logo.svg" alt="" />
         </a>
         <div>
           <Join>Join now</Join>
-          <SignIn>Sign in</SignIn>
+          <SignIn onClick={() => props.signIn()}>Sign in</SignIn>
         </div>
       </Nav>
       <Section>
@@ -74,7 +78,7 @@ const Nav = styled.div`
 `;
 
 // the join button
-const Join = styled.a`
+const Join = styled.button`
   font-size: 15px;
   padding: 10px 12px;
   text-align: center;
@@ -93,7 +97,7 @@ const Join = styled.a`
 `;
 
 // the sign in button
-const SignIn = styled.a`
+const SignIn = styled.button`
   font-size: 15px;
   cursor: pointer;
   box-shadow: inset 0 0 0 1px;
@@ -191,4 +195,14 @@ const Google = styled.button`
   display: none;
 `;
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  signIn: () => dispatch(signInAPI()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

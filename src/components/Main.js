@@ -8,6 +8,7 @@ import {
   faShare,
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
+import PostModal from './PostModal';
 
 function Main() {
   return (
@@ -112,6 +113,7 @@ function Main() {
           </SocialActions>
         </Article>
       </div>
+      <PostModal />
     </Container>
   );
 }
@@ -127,8 +129,8 @@ const CommonCard = styled.div`
   background-color: #fff;
   border-radius: 5px;
   position: relative;
-  border: none;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); */
 `;
 
 const ShareBox = styled(CommonCard)`
@@ -136,19 +138,26 @@ const ShareBox = styled(CommonCard)`
   flex-direction: column;
   background: white;
   color: #555;
-  margin: 0 0 8px;
+
   div {
     button {
       outline: none;
       color: rgba(0, 0, 0, 0.6);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 13px;
       line-height: 1.5;
       background: transparent;
       border: none;
       display: flex;
       align-items: center;
-      font-weight: 700;
+      padding: 10px 25px;
+      border-radius: 5px;
+      transition: background-color 0.5s;
+      cursor: pointer;
+
+      :hover {
+        background-color: rgba(0, 0, 0, 0.07);
+      }
     }
     :first-child {
       display: flex;
@@ -160,7 +169,6 @@ const ShareBox = styled(CommonCard)`
         margin-right: 8px;
       }
       button {
-        margin: 4px 0;
         flex-grow: 1;
         padding-top: 15px;
         padding-bottom: 15px;
@@ -173,6 +181,7 @@ const ShareBox = styled(CommonCard)`
 
         :hover {
           box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+          background-color: white;
         }
       }
     }
@@ -314,7 +323,7 @@ const SocialActions = styled.div`
   button {
     display: inline-flex;
     align-items: center;
-    padding: 10px 25px;
+    padding: 15px 25px;
     border-radius: 5px;
     transition: background-color 0.5s;
     cursor: pointer;
@@ -327,12 +336,12 @@ const SocialActions = styled.div`
 
     svg,
     span {
-      color: #888;
+      color: rgba(0, 0, 0, 0.6);
       transition: color 0.5s;
     }
 
     :hover {
-      background-color: rgba(0, 0, 0, 0.15);
+      background-color: rgba(0, 0, 0, 0.1);
       span,
       svg {
         color: #222;
