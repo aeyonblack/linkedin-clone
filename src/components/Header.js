@@ -81,6 +81,12 @@ function Header(props) {
                 </span>
               </a>
             </Work>
+
+            <TryPremium>
+              <span>
+                <a>Try premium for free</a>
+              </span>
+            </TryPremium>
           </NavListWrap>
         </Nav>
       </Content>
@@ -280,6 +286,20 @@ const User = styled(NavList)`
 
 const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
+`;
+
+const TryPremium = styled(NavList)`
+  font-size: 13px;
+  max-width: 100px;
+  text-align: center;
+  cursor: pointer;
+
+  a {
+    color: #996600;
+    :hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const mapStateToProps = (state) => ({

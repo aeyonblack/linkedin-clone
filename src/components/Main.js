@@ -9,14 +9,24 @@ import {
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import PostModal from './PostModal';
+import { useState } from 'react';
 
 function Main() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (e.target === e.currentTarget) {
+      setShowModal(!showModal);
+    }
+  };
+
   return (
     <Container>
       <ShareBox>
         <div>
           <img src="/images/user.svg" alt="" />
-          <button>Share a post</button>
+          <button onClick={handleClick}>Share a post</button>
         </div>
         <div>
           <button>
@@ -95,25 +105,25 @@ function Main() {
           </SocialCounts>
           <SocialActions>
             <button>
-              <FontAwesomeIcon icon={faThumbsUp} size={2} />
+              <img src="/images/thumbs-up-icon.svg" alt="" />
               <span>Like</span>
             </button>
             <button>
-              <FontAwesomeIcon icon={faCommentDots} />
+              <img src="/images/comment-icon.svg" alt="" />
               <span>Comment</span>
             </button>
             <button>
-              <FontAwesomeIcon icon={faShare} />
+              <img src="/images/share-icon.svg" alt="" />
               <span>Share</span>
             </button>
             <button>
-              <FontAwesomeIcon icon={faPaperPlane} />
+              <img src="/images/send-icon.svg" alt="" />
               <span>Send</span>
             </button>
           </SocialActions>
         </Article>
       </div>
-      <PostModal />
+      <PostModal showModal={showModal} handleClick={setShowModal} />
     </Container>
   );
 }
@@ -174,10 +184,11 @@ const ShareBox = styled(CommonCard)`
         padding-bottom: 15px;
         padding-left: 16px;
         border: 1px solid rgba(0, 0, 0, 0.15);
+        background-color: #f2f2f2;
         border-radius: 35px;
         text-align: left;
         cursor: pointer;
-        transition: box-shadow 0.15s;
+        transition: background-color 0.2s box-shadow 0.15s;
 
         :hover {
           box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
