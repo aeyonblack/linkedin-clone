@@ -13,11 +13,15 @@ function Home(props) {
       <Content>
         <Section>
           <h5>
-            <a>Job searching?</a>
+            {props.user ? (
+              <a>Hey {props.user.displayName}!</a>
+            ) : (
+              <a>Hey there!</a>
+            )}
           </h5>
           <p>
-            Find jobs that suit your skills and interests and make new
-            connections while doing so
+            I built this with react.js and firebase, it's not mobile responsive
+            yet but try posting something!
           </p>
         </Section>
         <Layout>
