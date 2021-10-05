@@ -8,15 +8,28 @@ import {
   getDownloadURL,
   collection,
   addDoc,
+  query,
+  getDocs,
 } from '../firebase';
 
 import db from '../firebase';
 
-import { SET_USER } from './actionType';
+import { SET_LOADING_STATUS, SET_USER, GET_ARTICLES } from './actionType';
+import { orderBy } from '@firebase/firestore';
 
 export const setUser = (user) => ({
   type: SET_USER,
   user,
+});
+
+export const setLoading = (status) => ({
+  type: SET_LOADING_STATUS,
+  status,
+});
+
+export const getArticles = (payload) => ({
+  type: GET_ARTICLES,
+  payload,
 });
 
 export function signInAPI() {
@@ -56,6 +69,8 @@ export function signOutAPI() {
 
 export function postArticleAPI(payload) {
   return (dispatch) => {
+    dispatch(setLoading(true));
+
     if (payload.image) {
       const imageRef = ref(storage, `images/${payload.image.name}`);
       const uploadTask = uploadBytesResumable(imageRef, payload.image);
@@ -97,6 +112,8 @@ export function postArticleAPI(payload) {
             console.log(`Document written with id: ${docRef.id}`);
           } catch (e) {
             console.error(`error loading document, ${e}`);
+          } finally {
+            dispatch(setLoading(false));
           }
         }
       );
@@ -116,7 +133,21 @@ export function postArticleAPI(payload) {
         });
       } catch (e) {
         console.error(`error loading document: ${e}`);
+      } finally {
+        setTimeout(() => dispatch(setLoading(false)), 2000);
       }
     }
+  };
+}
+
+export function getArticlesAPI() {
+  return async (dispatch) => {
+    let payload = [];
+    const q = query(collection(db, 'articles'), orderBy('user.date', 'desc'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      payload.push(doc.data());
+    });
+    dispatch(getArticles(payload));
   };
 }

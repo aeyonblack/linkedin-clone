@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 function Home(props) {
   return (
     <Container>
-      {!props.user && <Redirect to="/" />}
+      {/* {!props.user && <Redirect to="/" />} */}
       <Content>
         <Section>
           <h5>
@@ -20,8 +20,8 @@ function Home(props) {
             )}
           </h5>
           <p>
-            I built this with react.js and firebase, it's not mobile responsive
-            yet but try posting something!
+            I built this with react.js, redux and firebase, it's not mobile
+            responsive yet but try posting something!
           </p>
         </Section>
         <Layout>

@@ -8,7 +8,13 @@ import {
   getDownloadURL,
 } from '@firebase/storage';
 
-import { getFirestore, collection, addDoc } from '@firebase/firestore';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  getDocs,
+} from '@firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 //https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -45,6 +51,8 @@ export {
   getDownloadURL,
   collection,
   addDoc,
+  query,
+  getDocs,
 };
 
 export default db;

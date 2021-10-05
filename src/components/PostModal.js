@@ -53,8 +53,12 @@ export const PostModal = (props) => {
         timestamp: Timestamp.now(),
       };
 
-      props.postArticle(payload);
-      closePostModal(e);
+      if (shareImage === '' && videoLink === '') {
+        alert('Please add an image or video link, text alone is just boring!');
+      } else {
+        props.postArticle(payload);
+        closePostModal(e);
+      }
     }
   };
 
